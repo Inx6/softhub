@@ -1,0 +1,9 @@
+pub mod home;
+pub mod other;
+pub mod upload;
+pub mod img;
+pub mod add_u;
+pub mod login;
+pub mod top_t;
+pub mod search;
+pub mod index;

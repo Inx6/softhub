@@ -1,0 +1,20 @@
+[package]
+name = "ptprut"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "3"
+serde = "*"
+serde_json = "*"
+serde_yaml = "*"
+mysql = "20.*"
+colored = "2.*"
+reqwest = {version = "0.10", features = ["blocking","json"]}
+pbkdf2 = "0.10"
+rand_core = { version = "0.6", features = ["std"] }
+
+[profile.release]
+strip = true

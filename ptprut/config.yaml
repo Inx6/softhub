@@ -1,0 +1,10 @@
+# 服务器地址
+ip : 127.0.0.1
+# 端口
+port : 250
+# 数据库用户名
+db_name : root
+# 数据库密码
+db_pwd : admin123
+# 数据库名称
+db : list
