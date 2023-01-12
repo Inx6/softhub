@@ -27,11 +27,13 @@ pub async fn gets(data: &String) -> String{
     String::from(res)
 }
 // ip地址查询
-pub async fn ips(data: String) -> String{
+pub async fn ips(data: &str) -> String{
     let mut headers = reqwest::header::HeaderMap::new();
     headers.insert("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54".parse().unwrap());
 
-    let info = format!("https://www.fkcoder.com/ip?ip={}", data);
+    println!("{}",data);
+    let info = format!("https://www.fkcoder.com/ip?ip={}",data);
+    // println!("{}",info);
     let ds = reqwest::Client::new()
         .get(&info)
         .headers(headers)
@@ -46,12 +48,8 @@ pub async fn ips(data: String) -> String{
         Ok(e)=>{
             match e.get("country"){
                 Some(es) => {
-                    let es = String::from(format!("{}",es));
-                    if es == String::from("中国"){
-                        String::from("中国")
-                    }else{
-                        String::from("国外")
-                    }
+                    let nrt = serde_json::to_string(&e).unwrap();
+                    nrt
                 },
                 None => {
                     String::from("地址异常")

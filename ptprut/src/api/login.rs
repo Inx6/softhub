@@ -11,7 +11,7 @@ use crate::data::information::{Info, Login};
 use crate::go_str;
 
 #[post("/login")]
-async fn login(up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> HttpResponse{
+async fn login(_up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> HttpResponse{
     let info: Login = serde_json::from_str(&go_str!(req)).unwrap();
     // println!("{:#?}",info);
 
@@ -37,7 +37,7 @@ async fn login(up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> Http
                 let sql = format!("select nick,name,avatar,level,status,time from user where name = '{}'", info.name);
                 let res: Vec<(String, String, String, i32, i32, String)> = conn.query(sql).unwrap();
                 let mut inso = HashMap::new();
-                inso.insert("登录成功！", res);
+                inso.insert("suc", res);
                 HttpResponse::Ok()
                     .json(inso)
             }else{

@@ -14,7 +14,7 @@ async fn index(req: web::Query<Ia>, db: web::Data<mysql::Pool>) -> HttpResponse{
         let sql = "select * from address limit 0, 10";
         let res: Vec<(i32, String, String, String, String, String, String, String)> = conn.query(sql).unwrap();
         let mut info = HashMap::new();
-        info.insert(pagetotal[0], res);
+        info.insert("data", res);
         HttpResponse::Ok()
             .json(info)
     }else{
@@ -28,7 +28,7 @@ async fn index(req: web::Query<Ia>, db: web::Data<mysql::Pool>) -> HttpResponse{
             let sql = format!("select * from address limit {:?}, 10", req.size*10);
             let res: Vec<(i32, String, String, String, String, String, String, String)> = conn.query(sql).unwrap();
             let mut info = HashMap::new();
-            info.insert(pagetotal[0], res);
+            info.insert("data", res);
             HttpResponse::Ok()
                 .json(info)
         }

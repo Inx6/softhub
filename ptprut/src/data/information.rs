@@ -52,3 +52,11 @@ pub struct Tonge{
 pub struct Ia{
     pub size: i32
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Addr{
+    pub city: String,
+    pub province: String,
+    pub country: String,
+    pub isp: String,
+}

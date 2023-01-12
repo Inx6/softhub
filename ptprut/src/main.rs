@@ -79,6 +79,7 @@ async fn main() -> std::io::Result<()>{
             .service(api::top_t::sed)
             .service(api::search::search)
             .service(api::index::index)
+            .service(api::ipaddr::ipnet)
     })
     .bind(format!("{}:{}",i.ip, i.port))?
     .run()

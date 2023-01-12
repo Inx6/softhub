@@ -7,3 +7,4 @@ pub mod login;
 pub mod top_t;
 pub mod search;
 pub mod index;
+pub mod ipaddr;

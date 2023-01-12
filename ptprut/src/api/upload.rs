@@ -3,7 +3,7 @@ use crate::data::information;
 
 // 上传api
 #[post("/add_url")]
-pub async fn add(up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> impl Responder{
+pub async fn add(_up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> impl Responder{
     use mysql::*;
     use mysql::prelude::Queryable;
     // 获取连接

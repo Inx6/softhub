@@ -15,7 +15,7 @@ async fn top(req: web::Query<Tonge>, db: web::Data<mysql::Pool>) -> HttpResponse
         let sql = format!("select * from address where type = {:?} limit 0, 10", req.data);
         let res: Vec<(i32, String, String, String, String, String, String, String)> = conn.query(sql).unwrap();
         let mut info = HashMap::new();
-        info.insert(pagetotal[0], res);
+        info.insert("data", res);
         HttpResponse::Ok()
             .json(info)
     }else{
@@ -29,7 +29,7 @@ async fn top(req: web::Query<Tonge>, db: web::Data<mysql::Pool>) -> HttpResponse
             let sql = format!("select * from address where type = {:?} limit {:?}, 10", req.data, req.size*10);
             let res: Vec<(i32, String, String, String, String, String, String, String)> = conn.query(sql).unwrap();
             let mut info = HashMap::new();
-            info.insert(pagetotal[0], res);
+            info.insert("data", res);
             HttpResponse::Ok()
                 .json(info)
         }
@@ -49,7 +49,7 @@ async fn sed(req: web::Query<Tonge>, db: web::Data<mysql::Pool>) -> HttpResponse
         let sql = format!("select * from address where label = {:?} limit 0, 10", req.data);
         let res: Vec<(i32, String, String, String, String, String, String, String)> = conn.query(sql).unwrap();
         let mut info = HashMap::new();
-        info.insert(pagetotal[0], res);
+        info.insert("data", res);
         HttpResponse::Ok()
             .json(info)
     }else{
@@ -63,7 +63,7 @@ async fn sed(req: web::Query<Tonge>, db: web::Data<mysql::Pool>) -> HttpResponse
             let sql = format!("select * from address where label = {:?} limit {:?}, 10", req.data, req.size*10);
             let res: Vec<(i32, String, String, String, String, String, String, String)> = conn.query(sql).unwrap();
             let mut info = HashMap::new();
-            info.insert(pagetotal[0], res);
+            info.insert("data", res);
             HttpResponse::Ok()
                 .json(info)
         }

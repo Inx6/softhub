@@ -4,7 +4,7 @@ use crate::api::other::gets;
 
 // 图片查询api
 #[get("/")]
-pub async fn img(up: HttpRequest, req: web::Query<Info>, db: web::Data<mysql::Pool>) -> HttpResponse{
+pub async fn img(_up: HttpRequest, req: web::Query<Info>, db: web::Data<mysql::Pool>) -> HttpResponse{
     use mysql::prelude::Queryable;
     // 获取连接
     let mut conn = db.get_conn().unwrap();

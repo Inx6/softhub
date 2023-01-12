@@ -11,7 +11,7 @@ use crate::data::information::Add;
 use crate::{go_str, go_search};
 
 #[post("/add_u")]
-async fn add_u(up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> impl Responder{
+async fn add_u(_up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> impl Responder{
     let info: Add = serde_json::from_str(&go_str!(req)).unwrap();
     // println!("{:#?}",info);
 

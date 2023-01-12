@@ -4,7 +4,7 @@ use crate::data::information;
 
 // 应用链接查询api
 #[post("/")]
-pub async fn home(up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> HttpResponse{
+pub async fn home(_up: HttpRequest, req: String, db: web::Data<mysql::Pool>) -> HttpResponse{
     use mysql::*;
     use mysql::prelude::Queryable;
     // 获取连接
